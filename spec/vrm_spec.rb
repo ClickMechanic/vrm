@@ -45,4 +45,18 @@ RSpec.describe Vrm do
     end
   end
 
+  describe '#==' do
+    let(:test_vrm_string) { 'ab 51ABC' }
+    let(:other_vrm_string) { 'AB51 abc' }
+    let(:other_vrm) { described_class.from(other_vrm_string) }
+
+    it 'compares formatted VRMs' do
+      expect(subject).to eq other_vrm
+    end
+
+    context 'when VRMs are different' do
+      let(:other_vrm_string) { 'ab 51ABD' }
+      it { is_expected.not_to eq other_vrm }
+    end
+  end
 end

@@ -24,6 +24,10 @@ class Vrm
     vrm
   end
 
+  def ==(other)
+    formatted == self.class.from(other).formatted
+  end
+
   private
 
   attr_reader :vrm
